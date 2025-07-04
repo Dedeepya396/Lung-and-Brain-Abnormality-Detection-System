@@ -1,13 +1,13 @@
-# 🧠🫁 Lung and Brain Abnormality Detection
+#Lung and Brain Abnormality Detection
 
-## 📌 Model Details
+##  Model Details
 This project uses **Convolutional Neural Networks (CNNs)** built with **PyTorch** to detect abnormalities in lung and brain scans.
 
 ---
 
-## 🧠🫁 Detected Classes
+## Detected Classes
 
-### 🫁 Lung:
+### Lung:
 - Healthy Lungs  
 - Pneumonia  
 - Empyema  
@@ -18,7 +18,7 @@ This project uses **Convolutional Neural Networks (CNNs)** built with **PyTorch*
 - Lymphadenopathy  
 - Hypoplasia  
 
-### 🧠 Brain:
+###  Brain:
 - Healthy Brain  
 - Glioma  
 - Meningioma  
@@ -26,7 +26,7 @@ This project uses **Convolutional Neural Networks (CNNs)** built with **PyTorch*
 
 ---
 
-## ▶️ How to Run the App
+##  How to Run the App
 
 1. Clone the repository:
    ```bash
@@ -41,7 +41,7 @@ This project uses **Convolutional Neural Networks (CNNs)** built with **PyTorch*
 
 ---
 
-## 🧩 Dependencies
+## Dependencies
 
 Make sure the following packages are installed:
 
@@ -57,14 +57,7 @@ pip install torch torchvision pillow flask
 
 ---
 
-## 🧪 Test It Out
+## Test It Out
 
 You can find test images in the `testdata/` folder.  
 Use the web interface to upload and get predictions.
-
----
-
-## ✅ Note
-
-This project is for demonstration and educational purposes.  
-Feel free to explore and modify as needed.
