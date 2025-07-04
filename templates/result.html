@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(15, 32, 39, 0.75), rgba(44, 83, 100, 0.75)),
+                        url('./static/bg1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .result-container {
+            background-color: rgba(17, 17, 23, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            width: 380px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .result-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(56, 255, 189, 0.3), rgba(58, 23, 255, 0.3));
+            border-radius: inherit;
+            filter: blur(10px);
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #76d6ff;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease forwards;
+        }
+
+        p {
+            font-size: 30px;
+            color: rgb(255,255,255);
+            margin-bottom: 25px;
+            font-weight: bold;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 3px solid #76d6ff;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .retrain-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .retrain-container input {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 1px solid #76d6ff;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .retrain-container button {
+            background-color: #76d6ff;
+            color: #111;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .retrain-container button:hover {
+            background-color: #3cc5ff;
+            transform: scale(1.05);
+        }
+
+        .upload-another-link {
+            display: inline-block;
+            background-color: #76d6ff;
+            color: #111;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .upload-another-link:hover {
+            background-color: #3cc5ff;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Prediction Result</h1>
+
+        <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Uploaded Image" class="uploaded-image">
+        <p>"{{ result }}"</p>
+
+        <div class="retrain-container">
+            <form action="/retrain" method="post">
+                <input type="text" name="retrain_info" placeholder="Enter retrain info" required>
+                <button type="submit">Retrain</button>
+            </form>
+        </div>
+
+        <a href="/" class="upload-another-link">Upload Another Image</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(15, 32, 39, 0.75), rgba(44, 83, 100, 0.75)), 
+                        url('./static/bg1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(17, 17, 23, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            width: 450px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 150, 0.3));
+            border-radius: inherit;
+            filter: blur(10px);
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: white;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease forwards;
+        }
+
+        /* Hide default file input button */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Styled custom file input button */
+        .file-label {
+            display: inline-block;
+            background-color: #76d6ff;
+            color: #111;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .file-label:hover {
+            background-color: #10ac84;
+            transform: scale(1.05);
+        }
+
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;  
+            gap: 10px;  
+            align-items: center; 
+        }
+
+        .button-group button {
+            background-color: #76d6ff;
+            color: #111;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;  
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button-group button:hover {
+            background-color: #10ac84;
+            transform: scale(1.05);
+        }
+
+        input[type="submit"] {
+            background-color: #76d6ff;
+            color: #111;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        input[type="submit"]::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: width 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3cc5ff;
+            transform: scale(1.05);
+        }
+
+        input[type="submit"]:hover::after {
+            width: 100%;
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Image for Processing</h1>
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="button-group">
+                <button type="button" onclick="document.getElementById('ct-scan-upload').click();">CT Scan</button>
+                <button type="button" onclick="document.getElementById('xray-upload').click();">X-Ray</button>
+            </div>
+        
+            <input type="file" id="ct-scan-upload" name="ct_scan" accept="image/*" style="display:none;" />
+            <input type="file" id="xray-upload" name="xray" accept="image/*" style="display:none;" />
+            <input type="submit" value="Upload">
+        </form>
+        
+    </div>
+</body>
+</html>
