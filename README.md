@@ -1,4 +1,4 @@
-#Lung and Brain Abnormality Detection
+# Lung and Brain Abnormality Detection
 
 ##  Model Details
 This project uses **Convolutional Neural Networks (CNNs)** built with **PyTorch** to detect abnormalities in lung and brain scans.
